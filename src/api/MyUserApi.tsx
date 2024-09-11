@@ -3,6 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import { toast } from "sonner"
 
+const baseURL = import.meta.env.VITE_BASE_URL
    
 export const useUserInformation = ()=>{
     const {getAccessTokenSilently} = useAuth0()
@@ -10,7 +11,7 @@ export const useUserInformation = ()=>{
         const accessToken = await getAccessTokenSilently()
         try {
             const {data} = await customFetch.get(
-                `/users`,
+                `${baseURL}/users`,
                 {
                     headers: {
                         'Content-Type': "application/json",
@@ -55,7 +56,7 @@ const createMyUserRequest = async(user:CreateUserRequest, accessToken:string)=>{
     
     try {
         await customFetch.post(
-            '/users',
+            `${baseURL}/users`,
             user,
             {
                 headers: {
@@ -105,7 +106,7 @@ export const useUpdateUser = ()=>{
         
         try {
             await customFetch.put(
-                `/users/profile`,
+                `${baseURL}/users/profile`,
                 formData,
                 {
                     headers: {
