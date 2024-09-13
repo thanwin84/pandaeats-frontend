@@ -75,7 +75,6 @@ export const useGetMyRestaurant = ()=>{
     }
     const {
         data,
-        isError,
         isPending
     } = useQuery({
         queryKey: ['my-restaurant'],
@@ -104,7 +103,6 @@ export const useUpdateRestaurant = ()=>{
                 }
             )
         } catch (error) {
-            console.log(error)
             if (error instanceof Error){
                 const axiosError = error as any
                 throw new Error(axiosError?.response?.data.message)
