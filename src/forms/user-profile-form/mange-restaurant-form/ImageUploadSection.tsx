@@ -10,7 +10,6 @@ type Props = {
 const description = 'Add an image that will be displayed on your restaurant listing in the search results.Adding a new image will overite the existing one'
 export default function ImageUploadSection({className, imageUrl}:Props){
     const {control} = useFormContext()
-    const [file, setFile] = useState<File | null>(null)
     const [fileUrl, setFileUrl] = useState(imageUrl || "")
     
     return (

@@ -1,4 +1,3 @@
-import { restaurant } from '@/constants'
 import {z} from 'zod' 
 export type User = {
     _id: string,
