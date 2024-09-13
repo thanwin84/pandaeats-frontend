@@ -16,6 +16,11 @@ export default function Navlinks({className}:props){
                 to="/user-profile">
                 User Profile
             </Link>
+            <Link 
+                className='py-2 hover:bg-orange-400 hover:text-white rounded-md'
+                to="/restaurant-management">
+                Manage Restaurant
+            </Link>
             <Button
                 onClick={()=>logout()}
                 className='bg-orange-300 hover:bg-orange-400'

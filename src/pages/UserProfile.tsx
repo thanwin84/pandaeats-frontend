@@ -15,7 +15,7 @@ export default function UserProfile(){
     if (isError){
         return <p>Unable to load user profile</p>
     }
-    console.log(isError)
+    
    
     return (
         <Layout showHero={false} className="px-4 md:px-10" >

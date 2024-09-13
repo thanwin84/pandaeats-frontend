@@ -3,9 +3,11 @@ import Layout from "./layouts/Layout";
 import { 
     HomePage,
     AuthCallBackPage,
-    UserProfile
+    UserProfile,
+    ManageRestaurant
  } from "./pages";
 import ProtectedRoute from "./auth/ProtectedRoute";
+import Test from "./Test";
 
 export default function AppRoutes(){
     return (
@@ -32,6 +34,13 @@ export default function AppRoutes(){
                     element={<UserProfile/>}
                 />
             </Route>
+            <Route element={<ProtectedRoute/>}>
+                <Route
+                    path="restaurant-management"
+                    element={<ManageRestaurant/>}
+                />
+            </Route>
+            <Route path="/testing" element={<Test />} />
             
         </Routes>
     )

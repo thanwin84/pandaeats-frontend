@@ -106,7 +106,7 @@ export const useUpdateUser = ()=>{
         
         try {
             await customFetch.put(
-                `${baseURL}/users/profile`,
+                `${baseURL }/users/profile`,
                 formData,
                 {
                     headers: {
