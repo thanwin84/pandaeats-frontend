@@ -38,7 +38,7 @@ export default function Search({}: Props) {
       })
       const {city} = useParams()
       const {restuarantResults} = useSearchRestuarants(city, searchState)
-      const [showMore, setShowMore] = useState(false)
+      const [showMore, setShowMore] = useState(true)
       
       function toggleShowMore(){
         setShowMore(!showMore)
