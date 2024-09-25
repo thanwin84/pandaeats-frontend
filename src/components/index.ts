@@ -7,6 +7,7 @@ import UserDropDownMenu from "./UserDropDownMenu";
 import DrowDownContent from "./DropDownContent";
 import Navlinks from "./NavLinks";
 import LoadingButton from "./LoadingButton";
+import SearchBar from "./SearchBar";
 
 export {
     Header,
@@ -17,5 +18,6 @@ export {
     UserDropDownMenu,
     DrowDownContent,
     Navlinks,
-    LoadingButton
+    LoadingButton,
+    SearchBar
 }

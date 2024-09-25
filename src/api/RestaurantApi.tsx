@@ -1,3 +1,6 @@
+
+import { SearchState } from "@/pages/Search"
+import { SearchRestaurantsResponse } from "@/types"
 import customFetch from "@/utils/customFetch"
 import { useAuth0 } from "@auth0/auth0-react"
 import { useMutation, useQuery } from "@tanstack/react-query"
@@ -133,5 +136,42 @@ export const useUpdateRestaurant = ()=>{
     return {
         updateRestaurant,
         isPending
+    }
+}
+
+export const useSearchRestuarants = (city:string="", searchState:SearchState)=>{
+    const searchRestaurantRequest = async():Promise<SearchRestaurantsResponse>=>{
+        const params = new URLSearchParams()
+        params.append("searchQuery", searchState.searchQuery)
+        params.append("page", searchState.page.toString())
+        searchState.selectedCuisines.forEach(option =>{
+            params.append("selectedCuisines", option)
+        })
+        params.append('sortOption', searchState.sortOption)
+        console.log(searchState.sortOption)
+
+        try {
+            const {data} = await customFetch.get(`${baseURL}/restaurants/search/${city}?${params.toString()}`)
+            return data.data
+        } catch (error) {
+            if (error instanceof Error){
+                const axiosError = error as any
+                throw new Error(axiosError?.response?.data.message)
+            }
+            throw new Error("An unknown error has occured")
+        }
+    }
+    const {
+        data:restuarantResults,
+        isLoading
+    } = useQuery(
+        {
+            queryKey: ['matched-restaurant-response', searchState],
+            queryFn: searchRestaurantRequest
+        }
+    )
+    return {
+        restuarantResults,
+        isLoading
     }
 }

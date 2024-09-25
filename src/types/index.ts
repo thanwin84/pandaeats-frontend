@@ -39,8 +39,9 @@ export const formSchema = z.object({
 
 })
 
+
 export type RestaurantFormData = z.infer<typeof formSchema>
-export type RestaurantResponse = {
+export type Restaurant = {
     restaurantName: string;
     city: string;
     country: string;
@@ -54,5 +55,15 @@ export type RestaurantResponse = {
     imageUrl?: {
         url: string,
         publicId: string
+    }
+}
+
+
+export type SearchRestaurantsResponse = {
+    data: Restaurant[],
+    pagination: {
+        total: number,
+        page: number,
+        pages: number
     }
 }

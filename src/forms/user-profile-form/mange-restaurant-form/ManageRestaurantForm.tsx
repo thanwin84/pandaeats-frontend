@@ -1,5 +1,5 @@
 import { Form } from "@/components/ui/form"
-import { formSchema, RestaurantFormData, RestaurantResponse } from "@/types"
+import { formSchema, RestaurantFormData, Restaurant } from "@/types"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import DetailsForm from "./DetailsForm"
@@ -14,7 +14,7 @@ type Props = {
     isLoading?: boolean,
     onSave: (restaurantFormData: FormData)=>void,
     className?: string,
-    restaurant?: RestaurantResponse
+    restaurant?: Restaurant
 }
 export default function ManageRestaurantForm({
     onSave,

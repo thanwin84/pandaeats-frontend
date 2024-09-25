@@ -4,10 +4,10 @@ import {
     HomePage,
     AuthCallBackPage,
     UserProfile,
-    ManageRestaurant
+    ManageRestaurant,
+    Search
  } from "./pages";
 import ProtectedRoute from "./auth/ProtectedRoute";
-import Test from "./Test";
 
 export default function AppRoutes(){
     return (
@@ -40,7 +40,8 @@ export default function AppRoutes(){
                     element={<ManageRestaurant/>}
                 />
             </Route>
-            <Route path="/testing" element={<Test />} />
+            <Route path="search/:city" element={<Search/>} />
+            {/* <Route path="/testing" element={<SearchCard />} /> */}
             
         </Routes>
     )

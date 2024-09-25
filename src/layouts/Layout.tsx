@@ -20,7 +20,7 @@ export default function Layout({
         <div className="flex flex-col min-h-screen">
             <Header />
             {showHero && <Hero />}
-            <div className={`container mx-auto flex-1 py-10 ${className}`} >
+            <div className={`container mx-auto flex-1  ${className}`} >
                 {children}
             </div>
             <Footer/>
