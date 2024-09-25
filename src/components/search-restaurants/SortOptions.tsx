@@ -33,7 +33,7 @@ export default function SortOption({
         setOpen(!open)
     }
   return (
-    <div className="relative">
+    <div className={`relative ${className}`}>
         <p 
             className="rounded-md border px-4 py-2 cursor-pointer"
             onClick={()=>setOpen(!open)}

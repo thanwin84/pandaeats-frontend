@@ -64,7 +64,6 @@ export default function Search({}: Props) {
       function changeSortOption(value: string){
         setSearchState(prev => ({...prev, page: 1, sortOption: value}))
       }
-console.log(searchState)
     return (
         <Layout showHero={false} className="grid md:grid-cols-[250px_1fr] grid-cols-1" >
             <Context.Provider value={{
