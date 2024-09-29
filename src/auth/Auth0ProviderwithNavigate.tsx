@@ -14,9 +14,9 @@ export default function Auth0ProviderWithNavigate(
     if (!domain || !clientId || !redirectUri){
         throw new Error("Unable to initialize auth")
     }
-    const onRedirectCallback = (appState:AppState)=>{
+    const onRedirectCallback = (appState?:AppState)=>{
         
-         navigate(appState.returnTo ? appState.returnTo : '/auth-callback')
+         navigate(appState?.returnTo ? appState.returnTo : '/auth-callback')
     } 
     return (
         <Auth0Provider
