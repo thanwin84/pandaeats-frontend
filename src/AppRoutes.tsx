@@ -5,7 +5,8 @@ import {
     AuthCallBackPage,
     UserProfile,
     ManageRestaurant,
-    Search
+    Search,
+    RestaurantDetails
  } from "./pages";
 import ProtectedRoute from "./auth/ProtectedRoute";
 
@@ -40,6 +41,7 @@ export default function AppRoutes(){
                     element={<ManageRestaurant/>}
                 />
             </Route>
+            <Route path='restaurants/:restaurantId' element={<RestaurantDetails/>} />
             <Route path="search/:city" element={<Search/>} />
             {/* <Route path="/testing" element={<SearchCard />} /> */}
             

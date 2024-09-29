@@ -24,7 +24,7 @@ const formSchema = z.object({
     country: z.string().min(1, "Country is required")
 })
 
-type UserFormData = z.infer<typeof formSchema>
+export type UserFormData = z.infer<typeof formSchema>
 
 
 type props = {
@@ -56,7 +56,7 @@ export default function UserProfileForm({
         <Form {...form}>
             <form 
                 onSubmit={form.handleSubmit(onSave)}
-            className={`bg-gray-50 text-gray-800 px-6 py-8  space-y-3 rounded-md shadow-md ${className}`}>
+                className={`bg-gray-50 text-gray-800 px-6 py-8  space-y-3 rounded-md shadow-md ${className}`}>
                 <div>
                     <h2 className='text-2xl font-bold'>{title}</h2>
                     <FormDescription>
@@ -129,8 +129,8 @@ export default function UserProfileForm({
                         )}
                     />
                 </div>
-                {isLoading ? <LoadingButton/>: (
-                    <Button type='submit' className='bg-orange-500'>
+                {isLoading ? <LoadingButton className='w-full' />: (
+                    <Button type='submit' className='w-full bg-orange-400 hover:bg-orange-500'>
                         {buttonText}
                     </Button>
                 )}

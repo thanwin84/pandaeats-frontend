@@ -1,9 +1,10 @@
 
 import { SearchState } from "@/pages/Search"
-import { SearchRestaurantsResponse } from "@/types"
+import { Restaurant, SearchRestaurantsResponse } from "@/types"
 import customFetch from "@/utils/customFetch"
 import { useAuth0 } from "@auth0/auth0-react"
 import { useMutation, useQuery } from "@tanstack/react-query"
+import { useParams } from "react-router-dom"
 import { toast } from "sonner"
 
 const baseURL = import.meta.env.VITE_BASE_URL
@@ -172,6 +173,31 @@ export const useSearchRestuarants = (city:string="", searchState:SearchState)=>{
     )
     return {
         restuarantResults,
+        isLoading
+    }
+}
+
+export const useGetRestaurantById = ()=>{
+    const {restaurantId} = useParams()
+    const getRestaurantByIdRequest = async():Promise<Restaurant|never>=>{
+        try {
+            const response = await customFetch.get(`${baseURL}/restaurants/${restaurantId}`)
+            return response.data.data
+        } catch (error) {
+            throw error
+        }
+    }
+    const {
+        data: restaurant,
+        isLoading
+    } = useQuery(
+        {
+            queryKey: ['restaurantbyId'],
+            queryFn: getRestaurantByIdRequest
+        }
+    )
+    return {
+        restaurant,
         isLoading
     }
 }

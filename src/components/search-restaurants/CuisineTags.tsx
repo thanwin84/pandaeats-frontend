@@ -12,7 +12,7 @@ export default function CuisineTags({
 }: Props) {
   return (
     <ul 
-        className={`flex text-gray-600 flex-wrap justify-evenly word-breaks ${className}`}
+        className={`flex text-gray-600 flex-wrap  ${className}`}
         aria-label="cuisine types"
     >
         {cuisines?.map((cuisine, index)=>(

@@ -5,7 +5,6 @@ export type User = {
     addressLine1?: string,
     city?: string,
     country?: string
-    
 }
 
 
@@ -42,6 +41,7 @@ export const formSchema = z.object({
 
 export type RestaurantFormData = z.infer<typeof formSchema>
 export type Restaurant = {
+    _id: string,
     restaurantName: string;
     city: string;
     country: string;
@@ -51,6 +51,7 @@ export type Restaurant = {
     menuItem: {
         name: string;
         price: number;
+        _id: string
     }[];
     imageUrl?: {
         url: string,

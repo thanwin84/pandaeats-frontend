@@ -1,4 +1,4 @@
-import { Auth0Provider } from "@auth0/auth0-react"
+import { AppState, Auth0Provider } from "@auth0/auth0-react"
 import { useNavigate } from "react-router-dom"
 import {domain,clientId, redirectUri, identifier} from '../utils/envConfig'
 
@@ -14,9 +14,9 @@ export default function Auth0ProviderWithNavigate(
     if (!domain || !clientId || !redirectUri){
         throw new Error("Unable to initialize auth")
     }
-    const onRedirectCallback = ()=>{
+    const onRedirectCallback = (appState:AppState)=>{
         
-         navigate('/auth-callback')
+         navigate(appState.returnTo ? appState.returnTo : '/auth-callback')
     } 
     return (
         <Auth0Provider
