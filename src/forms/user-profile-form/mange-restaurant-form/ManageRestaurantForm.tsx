@@ -26,7 +26,12 @@ export default function ManageRestaurantForm({
         resolver: zodResolver(formSchema),
         defaultValues:  {
             cuisines: [],
-            menuItem: [{name: "", price: 0}]
+            menuItem: [{name: "", price: 0}],
+            restaurantName: "",    // Default value for each field
+            city: "",
+            country: "",
+            deliveryPrice: 0,
+            estimatedDeliveryTime: 0
         }
     })
 

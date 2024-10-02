@@ -60,7 +60,7 @@ export const useCreateRestaurant = ()=>{
 
 export const useGetMyRestaurant = ()=>{
     const {getAccessTokenSilently} = useAuth0()
-    const getMyRestaurantRequest = async()=>{
+    const getMyRestaurantRequest = async():Promise<Restaurant>=>{
         const accessToken = await getAccessTokenSilently()
         try {
             const response = await customFetch.get(`${baseURL}/restaurants`, {

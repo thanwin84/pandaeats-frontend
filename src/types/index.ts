@@ -58,6 +58,43 @@ export type Restaurant = {
         publicId: string
     }
 }
+export type CartItem = {
+    _id: string
+    name: string
+    quantity: number
+    price: number
+}
+type deliveryDetails = {
+    email: string,
+    name: string,
+    addressLine1: string,
+    city: string
+}
+export type OrderStatus = 'placed'| "paid"| "inProgress"| "delivered" | "outForDelivery"
+export type Order = {
+    _id: string,
+    restaurant: string,
+    user: string,
+    deliveryDetails: deliveryDetails,
+    cartItems: CartItem[],
+    status: OrderStatus,
+    createdAt:string,
+    updatedAt: string,
+    totalAmount: number,
+    userInfo: User,
+    restaurantDetails: Restaurant
+}
+export type MyOrder = {
+    _id: string,
+    restaurant: string,
+    deliveryDetails: deliveryDetails,
+    cartItems: CartItem[],
+    status: OrderStatus,
+    createdAt:string,
+    updatedAt: string,
+    totalAmount: number,
+    user: User
+}
 
 
 export type SearchRestaurantsResponse = {

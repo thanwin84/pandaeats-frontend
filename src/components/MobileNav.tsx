@@ -8,10 +8,11 @@ import {
 import { Menu, User as UserIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import { useAuth0 } from "@auth0/auth0-react";
-import Navlinks from "./NavLinks";
+import { links } from "@/utils/navLinks";
+import { Link } from "react-router-dom";
 
 export default function MobileNav(){
-    const {user, isAuthenticated, loginWithRedirect} = useAuth0()
+    const {user, isAuthenticated, loginWithRedirect, logout} = useAuth0()
     return (
         <Sheet>
             <SheetTrigger>
@@ -28,9 +29,27 @@ export default function MobileNav(){
                         </span>
                     )}
                 </SheetTitle>
-                <SheetDescription className="pt-2 mx-auto">
-                    {isAuthenticated ? (
-                        <Navlinks className=""/>
+                <SheetDescription className="hidden">
+                    Navlinks drop down
+                </SheetDescription>
+                {isAuthenticated ? (
+                        <div className="flex flex-col gap-2 text-center">
+                            {links.map(link => (
+                                <Link
+                                    key={link.name}
+                                    to={link.path}
+                                    className="py-2  hover:text-orange-500 font-semibold rounded-md"
+                                >
+                                {link.name}
+                                </Link>
+                            ))}
+                            <Button
+                                onClick={()=>logout()}
+                                className='bg-orange-300 hover:bg-orange-400'
+                            >
+                                Log out
+                            </Button>
+                        </div>
                     ): (
                         <Button
                             className="w-full font-bold bg-orange-500"
@@ -39,7 +58,6 @@ export default function MobileNav(){
                             Log in
                         </Button>
                     )}
-                </SheetDescription>
             </SheetContent>
         </Sheet>
     )

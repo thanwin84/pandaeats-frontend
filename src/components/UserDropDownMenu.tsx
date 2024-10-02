@@ -11,6 +11,9 @@ import { useAuth0 } from '@auth0/auth0-react'
 export default function UserDropDownMenu(){
     const [open, setOpen] = useState(false)
     const {user} = useAuth0()
+    function closeDropDown(){
+        setOpen(!open)
+    }
 
     return (
         <div className='max-w-44 relative'>
@@ -24,7 +27,7 @@ export default function UserDropDownMenu(){
             </button>
             {open && (
                 <DrowDownContent className='absolute top-12 shadow-md'>
-                    <Navlinks className='py-2'/>
+                    <Navlinks close={closeDropDown} className='py-2' />
                 </DrowDownContent>
             )}
         </div>

@@ -6,7 +6,8 @@ import {
     UserProfile,
     ManageRestaurant,
     Search,
-    RestaurantDetails
+    RestaurantDetails,
+    OrderStatus
  } from "./pages";
 import ProtectedRoute from "./auth/ProtectedRoute";
 
@@ -40,6 +41,9 @@ export default function AppRoutes(){
                     path="restaurant-management"
                     element={<ManageRestaurant/>}
                 />
+            </Route>
+            <Route element={<ProtectedRoute/>}>
+                <Route path="order-status" element={<OrderStatus/>} />
             </Route>
             <Route path='restaurants/:restaurantId' element={<RestaurantDetails/>} />
             <Route path="search/:city" element={<Search/>} />

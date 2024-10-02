@@ -18,7 +18,7 @@ export default function UserProfile(){
     
    
     return (
-        <Layout showHero={false} className="px-4 md:px-10" >
+        <Layout showHero={false} className="px-4 py-6 md:px-10" >
             <UserProfileForm 
                 isLoading={userUpdatePending}
                 onSave={updateUser} 

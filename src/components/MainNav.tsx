@@ -3,13 +3,20 @@ import { Button } from "./ui/button";
 import {
     UserDropDownMenu
 } from "../components"
+import { Link } from "react-router-dom";
 
 export default function MainNav(){
     const {loginWithRedirect, isAuthenticated} = useAuth0()
     return (
         <>
         {isAuthenticated ? (
-            <UserDropDownMenu/>
+            <div className="flex gap-4" >
+                <Link to="/order-status" className="my-auto text-orange-500 hover:font-semibold">
+                    Order Status
+                </Link>
+                <UserDropDownMenu/>
+                
+            </div>
         ): (
             <Button
                 variant='ghost'

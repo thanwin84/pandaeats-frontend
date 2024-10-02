@@ -4,6 +4,7 @@ import UserProfile from "./UserProfile";
 import ManageRestaurant from "./ManageRestaurant";
 import Search from "./Search";
 import RestaurantDetails from "./RestaurantDetails";
+import OrderStatus from "./OrderStatus";
 
 export {
     HomePage,
@@ -11,5 +12,6 @@ export {
     UserProfile,
     ManageRestaurant,
     Search,
-    RestaurantDetails
+    RestaurantDetails,
+    OrderStatus
 }

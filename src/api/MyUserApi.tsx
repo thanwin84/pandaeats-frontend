@@ -51,36 +51,35 @@ type CreateUserRequest = {
     email: string
 }
 
-const createMyUserRequest = async(user:CreateUserRequest, accessToken:string)=>{
-    
-    
-    try {
-        await customFetch.post(
-            `${baseURL}/users`,
-            user,
-            {
-                headers: {
-                    'Content-Type': "application/json",
-                    Authorization: `Bearer ${accessToken}`
-                }
-            }
-        )
-    } catch (error) {
-        throw new Error("Failed to create User")
-    }
-}
+
 
 export const useCreateUser = ()=>{
     const {getAccessTokenSilently} = useAuth0()
-    let accessToken = ""
-    getAccessTokenSilently().then(data => accessToken = data)
+    const createMyUserRequest = async(user:CreateUserRequest)=>{  
+        const accessToken = await getAccessTokenSilently()
+        try {
+            await customFetch.post(
+                `${baseURL}/users`,
+                user,
+                {
+                    headers: {
+                        'Content-Type': "application/json",
+                        Authorization: `Bearer ${accessToken}`
+                    }
+                }
+            )
+        } catch (error) {
+            console.log(error)
+            throw error
+        }
+    }
     const {
         mutateAsync: createUser,
         isPending,
         isError,
         isSuccess
     } = useMutation({
-        mutationFn:(user:CreateUserRequest)=>createMyUserRequest(user, accessToken)
+        mutationFn:(user:CreateUserRequest)=>createMyUserRequest(user)
     })
 
     return {

@@ -8,17 +8,13 @@ import { useEffect, useState } from "react";
 import { UserFormData } from "@/forms/user-profile-form/UserProfileForm";
 import { useParams } from "react-router-dom";
 import { useCheckoutSession } from "@/api/OrderApi";
+import { CartItem } from "@/types";
 
 type Props = {
   className?: string;
 };
 
-export type CartItem = {
-    _id: string
-    name: string
-    quantity: number
-    price: number
-}
+
 
 export type MenuItem = {
     _id: string

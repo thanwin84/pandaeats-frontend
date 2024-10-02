@@ -1,8 +1,9 @@
 import {  Minus, Plus, Trash, X } from "lucide-react";
 import { Separator } from "../ui/separator";
-import { CartItem, MenuItem } from "@/pages/RestaurantDetails";
+import { MenuItem } from "@/pages/RestaurantDetails";
 import CheckoutButton from "./CheckoutButton";
 import { UserFormData } from "@/forms/user-profile-form/UserProfileForm";
+import { CartItem } from "@/types";
 
 type Props = {
     className?: string
