@@ -143,7 +143,7 @@ export const useUpdateOrderStatus = ()=>{
     const updateOrderStatusRequest = async(data:UpdateStatusType)=>{
         const accessToken = await getAccessTokenSilently()
         try {
-            const response = await customFetch.patch(
+            await customFetch.patch(
                 `${baseURL}/orders/${data.orderId}/update-status`,
                 {status: data.status},
                 {
