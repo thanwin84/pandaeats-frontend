@@ -1,11 +1,11 @@
-import { Loader2 } from "lucide-react";
+import { Loader2 } from 'lucide-react';
 
 type Props = {
-    className?: string
-}
+  className?: string;
+};
 
-export default function Spinner({className}:Props) {
-    return (
-        <Loader2 className={`h-8 w-8 animate-spin text-blue-500 ${className}`} />
-    );
+export default function Spinner({ className }: Props) {
+  return (
+    <Loader2 className={`h-8 w-8 animate-spin text-gray-400 ${className}`} />
+  );
 }
